@@ -1,52 +1,79 @@
-Overview: 
+Overview:
 
 This project is built using React and integrates with Firebase for authentication. It manages customer data, displaying it in a table format, allowing users to view transactions for individual accounts. Additionally, MongoDB queries are created to filter accounts with transactions below a specified threshold (5000) and to list distinct products in the system.
-
-Tech Stack
-Frontend: 
-React.js, TailwindCSS, MUI (Material UI), Firebase Authentication
-Backend: 
-Node.js, Express.js, MongoDB
-Database: 
-MongoDB (DB dump restored)
-
-Setup Instructions
-Frontend Setup
-Clone the repository.
-
-Install the dependencies:
-npm install
-
-Start the React development server:
-npm run dev
-
-Backend Setup
-Clone the repository and install the dependencies:
-npm install
-
-To run the server, start it with:
-npm run dev
-
+ 
 Features
-Login Page: Users can log in using Firebase Authentication (Email/Password or Google OAuth).
+Login Page (/login)
+Firebase Authentication: Secure login using Email/Password and Google OAuth.
 
-Active Customers List: Once logged in, the active customers are displayed with details like Name, Address, and Accounts. Accounts are clickable to view related transactions.
+Simple, user-friendly interface for sign-up and login.
 
-Transactions: When a user clicks an account, they are shown the list of transactions for that account.
+Dashboard (/)
+Active Customers Table: Displays customer details including Name, Address, and Accounts.
 
-MongoDB Queries:
+Clickable Accounts: Each account number is a link. Clicking it shows the related transactions.
 
-Accounts with Transactions Below 5000: A MongoDB query to find account IDs that have made at least one transaction with a value below 5000.
+Navigation links for filtering:
 
-Distinct Products: A MongoDB query to list distinct products in the system.
+Transactions Below 5000: View account IDs with at least one transaction under 5000.
 
+Distinct Products: View a unique list of products available in the system.
 
-You can run the app and test the following:
+Transactions View (/transactions/:accountId)
+Lists all transactions for a selected account.
 
-Login: Use Firebase Authentication to log in.
+Option to filter transactions (e.g., show only transactions below 5000).
 
-Customer List: View the list of active customers with clickable account IDs.
+MongoDB Queries
+Accounts with Transactions Below 5000: Retrieves unique account IDs that have at least one transaction under 5000.
 
-Transactions: Click on an account to view its transactions.
+Distinct Products: Retrieves a list of unique products from the system.
 
-Mongo Queries: Test the MongoDB queries for accounts with transactions below 5000 and distinct products.
+How to Run
+1. Clone the Repository
+
+git clone [<repository-url>](https://github.com/sd025/vistaar-task/)
+cd vistaar-task
+2. Backend Setup
+Navigate to the backend folder:
+
+cd backend
+Install dependencies:
+
+npm install
+Create a .env file with your environment variables (MongoDB URI, Firebase config, etc.).
+
+Import the provided database dump (mileexp-test-db.zip) into your MongoDB instance.
+
+Start the backend server:
+
+npm run dev
+3. Frontend Setup
+Open a new terminal and navigate to the frontend folder:
+
+cd frontend
+Install dependencies:
+
+npm install
+Create a .env file with your Firebase configuration values.
+
+Start the frontend development server:
+
+npm run dev
+Open your browser and visit http://localhost:3000.
+
+Demo & Live URL
+
+Live URL: https://vistaar-task.onrender.com/
+
+Technologies Used
+Frontend: React, TailwindCSS, MUI DataGrid
+
+Backend: Node.js, Express.js
+
+Database: MongoDB
+
+Authentication: Firebase (Email/Password & Google OAuth)
+
+Additional Features
+Validations & Toasts: Enhanced user experience with proper validations and helpful toast notifications.
