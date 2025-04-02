@@ -10,6 +10,7 @@ import { toast } from "react-hot-toast";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -37,7 +38,7 @@ const Login = () => {
       console.error('Google sign in error', error);
     }
   };
-
+  
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded shadow">
@@ -54,16 +55,23 @@ const Login = () => {
               className="mt-1"
             />
           </div>
-          <div>
+          <div className="relative">
             <Label htmlFor="password">Password</Label>
             <Input
               id="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
               className="mt-1"
             />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute inset-y-0 right-0 p-5 mt-4 flex items-center text-gray-600"
+            >
+              {showPassword ? 'Hide' : 'Show'}
+            </button>
           </div>
           <Button type="submit" className="w-full">Login</Button>
         </form>
