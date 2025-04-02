@@ -1,10 +1,14 @@
-Overview
+Overview: 
+
 This project is built using React and integrates with Firebase for authentication. It manages customer data, displaying it in a table format, allowing users to view transactions for individual accounts. Additionally, MongoDB queries are created to filter accounts with transactions below a specified threshold (5000) and to list distinct products in the system.
 
 Tech Stack
-Frontend: React.js, TailwindCSS, MUI (Material UI), Firebase Authentication
-Backend: Node.js, Express.js, MongoDB
-Database: MongoDB (DB dump restored)
+Frontend: 
+React.js, TailwindCSS, MUI (Material UI), Firebase Authentication
+Backend: 
+Node.js, Express.js, MongoDB
+Database: 
+MongoDB (DB dump restored)
 
 Setup Instructions
 Frontend Setup
