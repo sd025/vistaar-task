@@ -4,6 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "@/firebase";
+import toast from "react-hot-toast";
 
 const Dashboard = () => {
   const [customers, setCustomers] = useState([]);
