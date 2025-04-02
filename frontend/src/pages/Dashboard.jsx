@@ -17,23 +17,25 @@ const Dashboard = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
+      toast.success("Logout successful");
     } catch (error) {
       console.error("Sign out error", error);
     }
   };
 
   const columns = [
-    { field: "name", headerName: "Name", flex: 1 },
-    { field: "address", headerName: "Address", flex: 2 },
+    { field: "name", headerName: "Name", flex: 1, minWidth: 150 },
+    { field: "address", headerName: "Address", flex: 2, minWidth: 250 },
     {
       field: "accounts",
       headerName: "Accounts",
       flex: 1,
+      minWidth: 150,
       renderCell: (params) => (
-        <div className="flex">
+        <div className="flex flex-wrap gap-1">
           {params.value.map((account) => (
-            <Link key={account} to={`/transactions/${account}`} className="text-blue-500">
-              {account} &nbsp;
+            <Link key={account} to={`/transactions/${account}`} className="text-blue-500 underline">
+              {account}
             </Link>
           ))}
         </div>
@@ -49,28 +51,31 @@ const Dashboard = () => {
   }));
 
   return (
-    <div className="p-4">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold">Greetings!</h1>
-        <div className="flex space-x-4">
+    <div className="p-4 sm:p-6 lg:p-8">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4">
+        <h1 className="text-2xl font-bold mb-2 sm:mb-0">Greetings!</h1>
+        <div className="flex flex-wrap gap-4 items-center">
           <Link to="/" className="text-lg font-bold">Dashboard</Link>
           <Link to="/transactions-below" className="text-gray-700">Transactions Under 5000</Link>
           <Link to="/distinct-products" className="text-gray-700">Products</Link>
         </div>
         <button
           onClick={handleLogout}
-          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+          className="mt-2 sm:mt-0 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
         >
           Logout
         </button>
       </div>
-      <div style={{ height: 500, overflow: 'auto'  }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={5}
-          disableSelectionOnClick
-        />
+      <div className="w-full overflow-auto py-4">
+        <div className="h-[500px] sm:h-[500px] w-full">
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={5}
+            disableSelectionOnClick
+            autoHeight={false}
+          />
+        </div>
       </div>
     </div>
   );
