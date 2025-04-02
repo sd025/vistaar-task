@@ -54,7 +54,7 @@ const Dashboard = () => {
         <h1 className="text-2xl font-bold">Greetings!</h1>
         <div className="flex space-x-4">
           <Link to="/" className="text-lg font-bold">Dashboard</Link>
-          <Link to="/transactions-below" className="text-gray-700">Trans &lt;5000</Link>
+          <Link to="/transactions-below" className="text-gray-700">Transactions Under 5000</Link>
           <Link to="/distinct-products" className="text-gray-700">Products</Link>
         </div>
         <button
